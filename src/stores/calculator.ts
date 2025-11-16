@@ -20,19 +20,19 @@ export const useCalculatorStore = defineStore('calculator', () => {
   const state = ref<CalculatorState>({
     currentLanguage: 'zh',
     pdacForm: {
-      farValue: '',
-      ca19_9: '',
+      farValue: undefined,
+      ca19_9: undefined,
       differentiation: '',
       nStaging: ''
     },
     dccForm: {
-      ca19_9: '',
-      diameter: '',
+      ca19_9: undefined,
+      diameter: undefined,
       differentiation: '',
       nerveInvasion: ''
     },
     aacForm: {
-      diameter: '',
+      diameter: undefined,
       nerveInvasion: '',
       nStaging: '',
       differentiation: ''
@@ -89,8 +89,8 @@ export const useCalculatorStore = defineStore('calculator', () => {
 
   const resetPDACForm = () => {
     state.value.pdacForm = {
-      farValue: '',
-      ca19_9: '',
+      farValue: undefined,
+      ca19_9: undefined,
       differentiation: '',
       nStaging: ''
     }
@@ -98,8 +98,8 @@ export const useCalculatorStore = defineStore('calculator', () => {
 
   const resetDCCForm = () => {
     state.value.dccForm = {
-      ca19_9: '',
-      diameter: '',
+      ca19_9: undefined,
+      diameter: undefined,
       differentiation: '',
       nerveInvasion: ''
     }
@@ -107,7 +107,7 @@ export const useCalculatorStore = defineStore('calculator', () => {
 
   const resetAACForm = () => {
     state.value.aacForm = {
-      diameter: '',
+      diameter: undefined,
       nerveInvasion: '',
       nStaging: '',
       differentiation: ''

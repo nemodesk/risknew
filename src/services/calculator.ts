@@ -76,6 +76,11 @@ export const AAC_NSTAGING_COEFFICIENTS: Record<string, number> = {
  */
 export function calculatePDAC(formData: PDACFormData): CalculationResult {
   try {
+    // 参数验证
+    if (formData.farValue === undefined || formData.ca19_9 === undefined) {
+      throw new Error('缺少必要参数')
+    }
+
     // 参数转换 - 使用 Decimal 进行高精度计算
     const bFar = new Decimal(formData.farValue)
     const bCA199 = new Decimal(formData.ca19_9)
@@ -144,6 +149,11 @@ export function calculatePDAC(formData: PDACFormData): CalculationResult {
  */
 export function calculateDCC(formData: DCCFormData): CalculationResult {
   try {
+    // 参数验证
+    if (formData.ca19_9 === undefined || formData.diameter === undefined) {
+      throw new Error('缺少必要参数')
+    }
+
     // 参数转换 - 使用 Decimal 进行高精度计算
     const bCA199 = new Decimal(formData.ca19_9)
     const bDiameter = new Decimal(formData.diameter)
@@ -212,6 +222,11 @@ export function calculateDCC(formData: DCCFormData): CalculationResult {
  */
 export function calculateAAC(formData: AACFormData): CalculationResult {
   try {
+    // 参数验证
+    if (formData.diameter === undefined) {
+      throw new Error('缺少必要参数')
+    }
+
     // 参数转换 - 使用 Decimal 进行高精度计算
     const bDiameter = new Decimal(formData.diameter)
     const bStaging = new Decimal(AAC_NSTAGING_COEFFICIENTS[formData.nStaging] || 0)
