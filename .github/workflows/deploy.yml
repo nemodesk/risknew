@@ -71,18 +71,4 @@ jobs:
           name: dist
           path: dist/
 
-  # 部署任务：将构建好的文件部署到GitHub Pages
-  # 这个任务依赖于build任务完成后才会执行
-  deploy:
-    environment:
-      name: github-pages                              # 部署环境名称
-      url: ${{ steps.deployment.outputs.page_url }}  # 部署完成后的网站URL
-    runs-on: ubuntu-latest                            # 使用最新版本的Ubuntu系统运行
-    needs: build                                      # 依赖build任务，必须等build完成后才执行
 
-    steps:
-      # 步骤1：部署到GitHub Pages
-      # 将之前上传的构建产物部署到GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment                    # 设置步骤ID，用于获取输出变量
-        uses: actions/deploy-pages@v4
