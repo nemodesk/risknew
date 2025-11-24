@@ -58,12 +58,18 @@ jobs:
         with:
           enablement: true
 
-      # 步骤6：上传构建产物
-      # 将构建生成的dist目录打包上传，供后续部署使用
+      # 步骤6：上传构建产物，供pages用
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'         # 指定要上传的目录路径
+          path: './dist'
+
+      # 步骤6.1：上传构建产物为可下载artifact
+      - name: Upload dist as downloadable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
   # 部署任务：将构建好的文件部署到GitHub Pages
   # 这个任务依赖于build任务完成后才会执行
